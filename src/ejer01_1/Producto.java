@@ -3,21 +3,33 @@ package ejer01_1;
 public class Producto {
 	
 	//Atributos
-	private String modelo;
+	private int modelo;
 	private byte stock;
 	private double precio;
 	
 	
+	//Constructores
+	public Producto(int modelo, byte stock, double precio) {
+		this.modelo = modelo;
+		this.stock = stock;
+		this.precio = precio;
+	}
+	
+	
+	public Producto() {
+		this(1, (byte)0, 0d);
+	}
+	
+	
 	//Get/Set
-	String getModelo() {
+	int getModelo() {
 		return modelo;
 	}
 	
-	void setModelo(String modelo) {
-		if() {
-			
+	void setModelo(int modelo) {
+		if(modelo < 0 && modelo > 100) {
+			throw new ArithmeticException("Modelo inválido"); 
 		}
-		
 		this.modelo = modelo;
 	}
 	
@@ -26,6 +38,9 @@ public class Producto {
 	}
 	
 	void setStock(byte stock) {
+		if(stock < 0) {
+			throw new ArithmeticException("Stock inválido"); 
+		}
 		this.stock = stock;
 	}
 	
@@ -34,6 +49,9 @@ public class Producto {
 	}
 	
 	void setPrecio(double precio) {
+		if(stock < 0) {
+			throw new ArithmeticException("Stock inválido"); 
+		}
 		this.precio = precio;
 	}
 }
