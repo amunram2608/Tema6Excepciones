@@ -12,23 +12,10 @@ public class Producto {
 	
 	//Constructores
 	public Producto(int modelo, byte stock, double precio) throws Exception {
-		if(modelo < 1 || modelo > 100) {
-			throw new IllegalArgumentException("Modelo inválido"); 
-		}
-		
-		if(stock < 0) {
-			throw new IllegalArgumentException("Precio inválido"); 
-		}
-		
-		if(precio < 0) {
-			throw new Exception("Stock inválido"); 
-		}
-		
-		this.modelo = modelo;
-		this.stock = stock;
-		this.precio = precio;
-		contador++;
-		this.id = contador;
+		setModelo(modelo);
+		setStock(stock);
+		setPrecio(precio);
+		id = ++contador;
 	}
 	
 	public Producto() throws Exception {
@@ -38,11 +25,7 @@ public class Producto {
 	
 	//Métodos
 	public byte disminuirStock(byte cantidad) {
-		if(cantidad < 0) {
-			throw new IllegalArgumentException("Cantidad inválida");
-		}
-		
-		if((this.stock - cantidad) < 0) {
+		if(cantidad < 0 || cantidad > stock) {
 			throw new IllegalArgumentException("Cantidad inválida");
 		}
 		
@@ -61,7 +44,7 @@ public class Producto {
 	}
 	
 	void setModelo(int modelo) {
-		if(modelo < 1 || modelo > 100) {
+		if(modelo < 1 || modelo > 1000) {
 			throw new IllegalArgumentException("Modelo inválido"); 
 		}
 		this.modelo = modelo;
@@ -82,7 +65,7 @@ public class Producto {
 		return precio;
 	}
 	
-	void setPrecio(double precio) throws Exception{
+	public void setPrecio(double precio) throws Exception{
 		if(precio < 0) {
 			throw new Exception("Precio inválido"); 
 		}
